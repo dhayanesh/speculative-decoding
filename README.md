@@ -2,8 +2,8 @@
 
 This repo contains two experiment tracks:
 
-- `compare/`: direct comparison of `base` vs `draft_model` vs `eagle3`
-- `improve/`: prompt-type/length study and simple GPU resource checks
+- `comparison/`: direct comparison of `base` vs `draft_model` vs `eagle3`
+- `acceptance_analysis/`: prompt-type/length study and simple GPU resource checks
 
 ## Models Used
 
@@ -20,7 +20,30 @@ This repo contains two experiment tracks:
 - `num_speculative_tokens=4` (speculative runs)
 - Sampling: `temperature=0.0`, `top_p=1.0`
 
-## draft_model vs eagle3 - Comparison Results (`comparison/README.md`)
+## base vs draft_model - Initial Comparison Results
+
+Single-run snapshot:
+
+- without spec latency: `27.777s`
+- with spec latency: `14.141s`
+- speedup: `1.964x`
+
+5-trial:
+
+- without spec:
+  - input tokens: `2477`
+  - output tokens: `512`
+  - latency mean/std: `27.783s ± 0.006`
+  - throughput mean/std: `18.43 ± 0.00 tok/s`
+
+- with spec:
+  - input tokens: `2477`
+  - output tokens: `512`
+  - latency mean/std: `14.131s ± 0.003`
+  - throughput mean/std: `36.23 ± 0.01 tok/s`
+
+
+## base vs draft_model vs eagle3 - Comparison Results (`comparison/README.md`)
 
 ### Normal inference
 | Technique | Inference time (s) | Acceptance | Accepted / Draft tokens | Mean acceptance length |
